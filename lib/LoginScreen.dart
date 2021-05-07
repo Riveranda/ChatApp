@@ -8,8 +8,9 @@ class LoginScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Acoria Chat Login',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: Colors.transparent),
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.transparent,
+      ),
       home: MyHomePage(title: 'Login'),
     );
   }
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final userField = TextField(
       obscureText: false,
       style: style,
+      cursorColor: gold,
       decoration: InputDecoration(
           isDense: true,
           prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
@@ -60,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final passwordField = TextField(
       obscureText: true,
       style: style,
+      cursorColor: gold,
       decoration: InputDecoration(
           isDense: true,
           prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
