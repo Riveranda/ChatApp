@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -28,6 +29,8 @@ Color get gold => const Color(0xffdeab1f);
 class _MyHomePageState extends State<MyHomePage> {
   TextStyle style =
       TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, color: Colors.white);
+  TextStyle boldStyle = TextStyle(
+      fontFamily: 'MontserratBold', fontSize: 30.0, color: Colors.white);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +38,17 @@ class _MyHomePageState extends State<MyHomePage> {
       obscureText: false,
       style: style,
       decoration: InputDecoration(
+          isDense: true,
+          prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            child: Text(
+              'Username: ',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Username",
-          hintStyle: TextStyle(color: Colors.white),
+          //prefixStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(32.0),
             borderSide: BorderSide(color: gold),
@@ -50,9 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
       obscureText: true,
       style: style,
       decoration: InputDecoration(
+          isDense: true,
+          prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            child: Text(
+              'Password: ',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          hintStyle: TextStyle(color: Colors.white),
+          //prefixStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(32.0),
             borderSide: BorderSide(color: gold),
@@ -62,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
               borderSide: BorderSide(color: gold))),
     );
     final loginButton = Material(
-      elevation: 5.0,
+      elevation: 10.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Colors.black,
+      color: Colors.lightBlue.withOpacity(.09),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -80,21 +99,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     return Stack(children: [
-      Image.asset(
-        "images/loginbackground.png",
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.height,
-        fit: BoxFit.cover,
+      Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/darkbackground.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+          child: Container(
+            color: Colors.black.withOpacity(.1),
+          ),
+        ),
       ),
       Scaffold(
           appBar: AppBar(
             leading: Image.asset("images/transparent-icon.png"),
-            title: Text("Acoria Chat Login"),
-            backgroundColor: gold,
+            title: Text("Login"),
+            backgroundColor: Color(0xff0f0f0f),
           ),
           body: Center(
             child: Container(
-              color: Colors.black26,
               child: Padding(
                   padding: const EdgeInsets.all(36.0),
                   child: SingleChildScrollView(
@@ -102,12 +128,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SizedBox(height: 100.0),
-                        Text(
-                          'Welcome to Acoria',
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: style.copyWith(fontSize: 30),
+                        //SizedBox(height: 100.0),
+                        ClipRect(
+                          child: Container(
+                            color: Colors.black.withOpacity(.4),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Welcome to Acoria',
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: style.copyWith(
+                                    fontSize: 30, fontWeight: FontWeight.w900),
+                              ),
+                            ),
+                          ),
                         ),
                         SizedBox(height: 150),
                         userField,
