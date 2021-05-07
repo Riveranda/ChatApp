@@ -35,58 +35,65 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final userField = TextField(
-      obscureText: false,
-      style: style,
-      cursorColor: gold,
-      decoration: InputDecoration(
-          isDense: true,
-          prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-            child: Text(
-              'Username: ',
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          //prefixStyle: TextStyle(color: Colors.white),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0),
-            borderSide: BorderSide(color: gold),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(color: gold))),
-    );
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      cursorColor: gold,
-      decoration: InputDecoration(
-          isDense: true,
-          prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-            child: Text(
-              'Password: ',
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          //prefixStyle: TextStyle(color: Colors.white),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0),
-            borderSide: BorderSide(color: gold),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(color: gold))),
-    );
+    final userField = Container(
+        color: Colors.black.withOpacity(.6),
+        child: TextField(
+          obscureText: false,
+          style: style,
+          cursorColor: Colors.lightBlue,
+          decoration: InputDecoration(
+              isDense: true,
+              prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                child: Text(
+                  'Username: ',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+              contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              //prefixStyle: TextStyle(color: Colors.white),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.horizontal(),
+                borderSide: BorderSide(color: Colors.blueAccent),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.horizontal(),
+                  borderSide: BorderSide(color: Colors.blueAccent))),
+        ));
+
+    final passwordField = Container(
+        color: Colors.black.withOpacity(.6),
+        child: TextField(
+          obscureText: true,
+          style: style,
+          cursorColor: Colors.lightBlue,
+          decoration: InputDecoration(
+              isDense: true,
+              prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                child: Text(
+                  'Password: ',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+              contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              //prefixStyle: TextStyle(color: Colors.white),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.horizontal(),
+                borderSide: BorderSide(color: Colors.blueAccent),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.horizontal(),
+                  borderSide: BorderSide(color: Colors.blueAccent))),
+        ));
+
+    /** */
     final loginButton = Material(
       elevation: 10.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Colors.lightBlue.withOpacity(.09),
+      color: Colors.blue.withOpacity(.6),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -101,11 +108,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/darkbackground.jpg'),
+            image: AssetImage('images/loginbackground.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -116,11 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+
+      
       Scaffold(
           appBar: AppBar(
             leading: Image.asset("images/transparent-icon.png"),
             title: Text("Login"),
-            backgroundColor: Color(0xff0f0f0f),
+            backgroundColor: Colors.blue.withOpacity(.8),
           ),
           body: Center(
             child: Container(
@@ -134,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         //SizedBox(height: 100.0),
                         ClipRect(
                           child: Container(
-                            color: Colors.black.withOpacity(.4),
+                            //color: Colors.black.withOpacity(.4),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
